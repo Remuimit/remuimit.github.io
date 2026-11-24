@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Remuimit · 红白recaptcha</title>
-<meta name="description" content="Remuimit（红白recaptcha）的个人主页 — 折腾不止的树莓派玩家，写点代码，搞点小项目。">
+<title>红白Reimu的小窝 — reimu0721.xyz</title>
+<meta name="description" content="红白Reimu的个人博客：记录折腾、生活和想法。欢迎来玩喵~">
 <meta name="theme-color" content="#0a0c10">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230a0c10'/><text x='50' y='72' font-size='60' text-anchor='middle' fill='%23ff3d54' font-family='Georgia,serif'>R</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230a0c10'/><text x='50' y='72' font-size='58' text-anchor='middle' fill='%23ff3d54' font-family='Georgia,serif'>喵</text></svg>">
 <style>
   :root{
-    --bg:#0a0c10; --surface:#12161f; --surface-2:#171c27; --line:#222836;
+    --bg:#0a0c10; --surface:#12161f; --surface-2:#171c27; --line:#232936;
     --ink:#eef1f7; --muted:#8f97a9; --accent:#ff3d54; --accent-2:#ff7a8a;
     --glow:rgba(255,61,84,.16);
   }
@@ -18,8 +18,7 @@
   body{
     margin:0;background:var(--bg);color:var(--ink);
     font-family:"Inter","SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Noto Sans CJK SC","Microsoft YaHei",sans-serif;
-    line-height:1.65;-webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
+    line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;
   }
   ::selection{background:var(--accent);color:#fff}
   a{color:inherit;text-decoration:none}
@@ -28,122 +27,100 @@
     background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
                      linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
     background-size:64px 64px;
-    mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,#000 30%,transparent 75%);
-    -webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,#000 30%,transparent 75%);
+    mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,#000 30%,transparent 78%);
+    -webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,#000 30%,transparent 78%);
   }
-  .glow{
-    position:fixed;z-index:-1;pointer-events:none;border-radius:50%;filter:blur(90px);
-    background:var(--glow);
-  }
-  .glow.a{width:560px;height:560px;top:-240px;right:-120px}
-  .glow.b{width:420px;height:420px;bottom:-200px;left:-140px;background:rgba(255,255,255,.05)}
+  .glow{position:fixed;z-index:-1;pointer-events:none;border-radius:50%;filter:blur(90px);background:var(--glow)}
+  .glow.a{width:600px;height:600px;top:-260px;right:-140px}
+  .glow.b{width:420px;height:420px;bottom:-200px;left:-140px;background:rgba(255,255,255,.045)}
   .wrap{width:min(1080px,calc(100% - 48px));margin:0 auto}
 
-  header{
-    position:sticky;top:0;z-index:20;backdrop-filter:blur(14px);
-    background:rgba(10,12,16,.72);border-bottom:1px solid var(--line);
-  }
+  header{position:sticky;top:0;z-index:20;backdrop-filter:blur(14px);background:rgba(10,12,16,.72);border-bottom:1px solid var(--line)}
   .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
-  .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.02em}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:15px}
   .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 14px var(--accent)}
-  .brand span{font-size:15px}
+  .brand small{color:var(--muted);font-weight:400;font-size:12px;margin-left:2px;letter-spacing:.06em}
   .nav-links{display:flex;gap:26px;font-size:13.5px;color:var(--muted)}
   .nav-links a{transition:color .2s}
   .nav-links a:hover{color:var(--accent-2)}
 
-  .hero{padding:96px 0 72px;display:grid;grid-template-columns:1.15fr .85fr;gap:64px;align-items:center}
-  .eyebrow{
-    display:inline-flex;align-items:center;gap:8px;margin:0 0 22px;
-    font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent-2);font-weight:600;
-  }
+  .hero{padding:92px 0 76px;display:grid;grid-template-columns:1.18fr .82fr;gap:64px;align-items:center}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;margin:0 0 20px;font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent-2);font-weight:600}
   .eyebrow::before{content:"";width:26px;height:1px;background:var(--accent)}
-  h1{
-    margin:0;font-size:clamp(64px,9vw,118px);line-height:.92;letter-spacing:-.05em;
-    font-family:Georgia,"Times New Roman",serif;font-weight:400;
-  }
-  h1 .accent{color:var(--accent);font-style:italic}
-  .alias{margin:14px 0 0;font-size:15px;color:var(--muted);letter-spacing:.14em}
-  .alias b{color:var(--ink);font-weight:600;letter-spacing:.1em}
-  .typing{margin:26px 0 0;font-size:17px;color:var(--muted);min-height:27px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+  h1{margin:0;font-size:clamp(52px,7.4vw,100px);line-height:1.02;letter-spacing:-.045em;font-family:Georgia,"Times New Roman",serif;font-weight:400}
+  h1 .accent{color:var(--accent)}
+  .domain{margin:16px 0 0;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:15px;color:var(--muted);letter-spacing:.04em}
+  .domain b{color:var(--ink)}
+  .typing{margin:24px 0 0;font-size:17px;color:var(--muted);min-height:27px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
   .caret{display:inline-block;width:9px;height:19px;margin-left:4px;vertical-align:-3px;background:var(--accent);animation:blink 1.1s steps(1) infinite}
   @keyframes blink{50%{opacity:0}}
   .cta-row{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
-  .btn{
-    display:inline-flex;align-items:center;gap:9px;padding:12px 20px;border-radius:10px;
-    font-size:14px;font-weight:600;transition:transform .18s,background .2s,box-shadow .2s;border:1px solid transparent;
-  }
-  .btn.primary{background:var(--accent);color:#fff;box-shadow:0 8px 30px rgba(255,61,84,.28)}
-  .btn.primary:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(255,61,84,.38)}
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:13px 22px;border-radius:11px;font-size:14.5px;font-weight:600;transition:transform .18s,background .2s,box-shadow .2s,border-color .2s;border:1px solid transparent}
+  .btn.primary{background:var(--accent);color:#fff;box-shadow:0 10px 34px rgba(255,61,84,.30)}
+  .btn.primary:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(255,61,84,.42)}
   .btn.ghost{border-color:var(--line);color:var(--ink);background:rgba(255,255,255,.02)}
   .btn.ghost:hover{border-color:var(--accent);color:var(--accent-2);transform:translateY(-2px)}
 
-  .portrait{
-    position:relative;aspect-ratio:1;max-width:340px;justify-self:end;border-radius:26px;
-    border:1px solid var(--line);
-    background:
-      radial-gradient(120% 120% at 30% 20%,rgba(255,61,84,.22),transparent 55%),
-      radial-gradient(120% 120% at 80% 90%,rgba(255,255,255,.10),transparent 55%),
-      var(--surface);
-    overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5);
-    animation:float 7s ease-in-out infinite;
+  .visual{position:relative;justify-self:end;width:100%;max-width:350px}
+  .postcard{
+    position:relative;border-radius:22px;border:1px solid var(--line);overflow:hidden;
+    background:radial-gradient(120% 120% at 30% 15%,rgba(255,61,84,.20),transparent 55%),
+               radial-gradient(120% 120% at 85% 90%,rgba(255,255,255,.09),transparent 55%),
+               var(--surface);
+    box-shadow:0 30px 80px rgba(0,0,0,.5);animation:float 7s ease-in-out infinite;
   }
-  @keyframes float{50%{transform:translateY(-10px)}}
-  .portrait .initials{
-    position:absolute;inset:0;display:grid;place-items:center;
-    font-family:Georgia,serif;font-size:118px;color:rgba(255,255,255,.92);letter-spacing:-.04em;
+  @keyframes float{50%{transform:translateY(-9px)}}
+  .postcard .bar{display:flex;gap:6px;padding:13px 15px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.02)}
+  .postcard .bar i{width:9px;height:9px;border-radius:50%;background:#2c3342}
+  .postcard .bar i:first-child{background:var(--accent)}
+  .postcard .body{padding:26px 24px 30px}
+  .postcard .cat{font-size:56px;line-height:1;margin:0 0 14px}
+  .postcard .url{font-family:ui-monospace,monospace;font-size:13px;color:var(--accent-2);margin:0 0 6px}
+  .postcard .desc{margin:0;font-size:13px;color:var(--muted)}
+  .postcard .stamp{
+    position:absolute;right:18px;bottom:16px;font-size:10.5px;letter-spacing:.18em;color:var(--muted);
+    padding:5px 10px;border:1px dashed var(--line);border-radius:999px;background:rgba(10,12,16,.6);
   }
-  .portrait .tag{
-    position:absolute;left:18px;bottom:16px;font-size:12px;letter-spacing:.16em;color:var(--muted);
-    padding:6px 10px;border:1px solid var(--line);border-radius:999px;background:rgba(10,12,16,.6);
-  }
-  .portrait .ring{position:absolute;inset:14px;border-radius:20px;border:1px dashed rgba(255,255,255,.10)}
 
-  section{padding:64px 0}
-  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:34px}
+  section{padding:62px 0}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:32px}
   .sec-head h2{margin:0;font-size:26px;letter-spacing:-.02em;font-weight:600}
   .sec-head .idx{font-family:ui-monospace,monospace;font-size:13px;color:var(--accent);letter-spacing:.12em}
   .sec-head .line{flex:1;height:1px;background:var(--line)}
+  .sec-head .more{font-size:13px;color:var(--muted);transition:color .2s}
+  .sec-head .more:hover{color:var(--accent-2)}
 
-  .about p{margin:0 0 18px;color:var(--muted);font-size:16.5px;max-width:720px}
+  .posts{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+  .post{display:flex;align-items:baseline;gap:20px;padding:17px 6px;border-bottom:1px solid var(--line);transition:background .18s,transform .18s}
+  .post:hover{background:rgba(255,61,84,.05);transform:translateX(4px)}
+  .post time{flex:none;width:96px;font-family:ui-monospace,monospace;font-size:12.5px;color:var(--muted)}
+  .post .t{font-size:15.5px;color:var(--ink);transition:color .18s}
+  .post:hover .t{color:var(--accent-2)}
+  .post .a{margin-left:auto;flex:none;color:var(--muted);font-size:14px;transition:color .18s}
+  .post:hover .a{color:var(--accent)}
+  .posts-empty{padding:26px 6px;color:var(--muted);font-size:14px}
+
+  .about p{margin:0 0 16px;color:var(--muted);font-size:16.5px;max-width:720px}
   .about p b{color:var(--ink);font-weight:600}
-  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
-  .chip{
-    padding:7px 13px;border-radius:999px;font-size:12.5px;color:var(--ink);
-    background:var(--surface-2);border:1px solid var(--line);
-    transition:border-color .2s,color .2s;
-  }
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+  .chip{padding:7px 13px;border-radius:999px;font-size:12.5px;background:var(--surface-2);border:1px solid var(--line);transition:border-color .2s,color .2s}
   .chip:hover{border-color:var(--accent);color:var(--accent-2)}
 
-  .links{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-  .card{
-    position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:26px;
-    padding:24px;border-radius:16px;background:var(--surface);border:1px solid var(--line);
-    transition:transform .2s,border-color .2s,background .2s;overflow:hidden;
-  }
-  .card::after{
-    content:"";position:absolute;inset:0;opacity:0;transition:opacity .25s;
-    background:radial-gradient(220px 160px at 80% 0%,rgba(255,61,84,.16),transparent 70%);
-  }
-  .card:hover{transform:translateY(-4px);border-color:rgba(255,61,84,.55)}
-  .card:hover::after{opacity:1}
-  .card .icon{font-size:22px}
-  .card h3{margin:14px 0 6px;font-size:17px}
-  .card p{margin:0;font-size:13.5px;color:var(--muted)}
-  .card .arrow{position:absolute;top:22px;right:22px;color:var(--muted);transition:transform .2s,color .2s}
-  .card:hover .arrow{color:var(--accent);transform:translate(3px,-3px)}
-
-  footer{border-top:1px solid var(--line);padding:34px 0 44px;margin-top:40px}
-  .foot{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;color:var(--muted);font-size:13px}
+  footer{border-top:1px solid var(--line);padding:32px 0 44px;margin-top:40px}
+  .foot{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--muted);font-size:13px}
+  .foot a{color:var(--accent-2)}
   .foot .heart{color:var(--accent)}
 
   @media (max-width:880px){
-    .hero{grid-template-columns:1fr;gap:48px;padding-top:64px}
-    .portrait{justify-self:start;max-width:280px}
-    .links{grid-template-columns:1fr}
+    .hero{grid-template-columns:1fr;gap:44px;padding-top:60px}
+    .visual{justify-self:start;max-width:300px}
     .nav-links{display:none}
+    .post{flex-wrap:wrap;gap:6px 14px}
+    .post time{width:auto}
+    .post .a{display:none}
   }
   @media (prefers-reduced-motion:reduce){
-    .portrait{animation:none}.caret{animation:none}
+    .postcard{animation:none}.caret{animation:none}
   }
 </style>
 </head>
@@ -154,11 +131,11 @@
 
 <header>
   <div class="wrap nav">
-    <a class="brand" href="#top"><span class="dot"></span><span>Remuimit</span></a>
+    <a class="brand" href="#top"><span class="dot"></span>红白Reimu的小窝<small>reimu0721.xyz</small></a>
     <nav class="nav-links">
-      <a href="#about">关于</a>
-      <a href="#links">链接</a>
-      <a href="https://github.com/Remuimit" target="_blank" rel="noopener">GitHub ↗</a>
+      <a href="#posts">最新文章</a>
+      <a href="#about">关于小窝</a>
+      <a href="https://reimu0721.xyz" target="_blank" rel="noopener">进入博客 ↗</a>
     </nav>
   </div>
 </header>
@@ -166,92 +143,104 @@
 <main class="wrap" id="top">
   <section class="hero">
     <div>
-      <p class="eyebrow">Hello, world</p>
-      <h1>Remu<span class="accent">i</span>mit</h1>
-      <p class="alias">aka <b>红白recaptcha</b></p>
+      <p class="eyebrow">个人博客 · personal blog</p>
+      <h1>红白Reimu的<br><span class="accent">小窝</span></h1>
+      <p class="domain">→ <b>reimu0721.xyz</b></p>
       <p class="typing"><span id="typed"></span><span class="caret"></span></p>
       <div class="cta-row">
-        <a class="btn primary" href="https://reimu0721.xyz" target="_blank" rel="noopener">访问博客 →</a>
+        <a class="btn primary" href="https://reimu0721.xyz" target="_blank" rel="noopener">进入博客 →</a>
         <a class="btn ghost" href="https://github.com/Remuimit" target="_blank" rel="noopener">GitHub</a>
       </div>
     </div>
-    <div class="portrait" aria-hidden="true">
-      <div class="ring"></div>
-      <div class="initials">R</div>
-      <div class="tag">RASPBERRY PI PLAYER</div>
+    <div class="visual">
+      <div class="postcard" aria-hidden="true">
+        <div class="bar"><i></i><i></i><i></i></div>
+        <div class="body">
+          <p class="cat">🐱</p>
+          <p class="url">https://reimu0721.xyz</p>
+          <p class="desc">这是一个个人博客，欢迎来玩喵~</p>
+        </div>
+        <span class="stamp">REIMU'S NEST</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="posts">
+    <div class="sec-head">
+      <span class="idx">01</span><h2>最新文章</h2><span class="line"></span>
+      <a class="more" href="https://reimu0721.xyz" target="_blank" rel="noopener">查看全部 ↗</a>
+    </div>
+    <div class="posts" id="post-list">
+      <p class="posts-empty">正在加载最新文章…</p>
     </div>
   </section>
 
   <section class="about" id="about">
-    <div class="sec-head"><span class="idx">01</span><h2>关于</h2><span class="line"></span></div>
-    <p>我是 <b>Remuimit</b>，一个喜欢折腾硬件和网络的人。用树莓派跑小服务器、写点技术笔记，偶尔搞些奇怪的小项目。</p>
-    <p>相信动手比空想有意思——把东西跑起来、亲手调试、记录下来，就是最好的学习方式。这个页面是我在互联网上的一个小角落。</p>
+    <div class="sec-head"><span class="idx">02</span><h2>关于小窝</h2><span class="line"></span></div>
+    <p>这里是 <b>红白Reimu</b> 的个人博客，记录折腾硬件、写代码、玩游戏和日常琐事的角落。</p>
+    <p>内容主要围绕 <b>AI 与工具</b>、<b>Web 折腾</b>、<b>音乐</b> 和 <b>围棋</b>，也会有些碎碎念。如果你也喜欢这些东西，欢迎来博客坐坐、留个言喵~</p>
     <div class="chips">
-      <span class="chip">Raspberry Pi</span>
-      <span class="chip">Linux</span>
-      <span class="chip">网络折腾</span>
-      <span class="chip">自建服务</span>
-      <span class="chip">猫娘爱好者 🐱</span>
-    </div>
-  </section>
-
-  <section id="links">
-    <div class="sec-head"><span class="idx">02</span><h2>链接</h2><span class="line"></span></div>
-    <div class="links">
-      <a class="card" href="https://reimu0721.xyz" target="_blank" rel="noopener">
-        <span class="arrow">↗</span>
-        <span class="icon">📝</span>
-        <div><h3>博客</h3><p>reimu0721.xyz — 技术笔记与日常记录</p></div>
-      </a>
-      <a class="card" href="https://github.com/Remuimit" target="_blank" rel="noopener">
-        <span class="arrow">↗</span>
-        <span class="icon">⌨️</span>
-        <div><h3>GitHub</h3><p>@Remuimit — 代码与小项目</p></div>
-      </a>
-      <a class="card" href="https://reimu0721.xyz" target="_blank" rel="noopener">
-        <span class="arrow">↗</span>
-        <span class="icon">💬</span>
-        <div><h3>找我</h3><p>QQ / 博客留言 — 欢迎交流</p></div>
-      </a>
+      <span class="chip">AI 与工具</span>
+      <span class="chip">Web 折腾</span>
+      <span class="chip">音乐</span>
+      <span class="chip">围棋</span>
+      <span class="chip">树莓派</span>
+      <span class="chip">猫娘 🐱</span>
     </div>
   </section>
 </main>
 
 <footer>
   <div class="wrap foot">
-    <span>© <span id="year">2026</span> Remuimit · 红白recaptcha</span>
-    <span>Built with <span class="heart">♥</span> on GitHub Pages</span>
+    <span>© <span id="year">2026</span> 红白Reimu · <a href="https://reimu0721.xyz" target="_blank" rel="noopener">reimu0721.xyz</a></span>
+    <span>Built with <span class="heart">♥</span> and GitHub Pages</span>
   </div>
 </footer>
 
 <script>
 (function(){
   document.getElementById('year').textContent = new Date().getFullYear();
-  var lines = [
-    '折腾不止的树莓派玩家。',
-    '写点代码，搞点小项目。',
-    '自建服务爱好者 · 网络折腾人。',
-    '欢迎来到我的小站 ✨'
-  ];
-  var el = document.getElementById('typed');
-  var li = 0, ci = 0, back = false;
+
+  /* 打字机标语 */
+  var lines = ['这是一个个人博客，欢迎来玩喵~', '记录折腾、生活和想法。', 'AI、Web、音乐、围棋，什么都写点。', '欢迎来玩喵~ 🐱'];
+  var el = document.getElementById('typed'), li = 0, ci = 0, back = false;
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduce) { el.textContent = lines[0]; return; }
-  function tick(){
-    var cur = lines[li];
-    if (!back){
-      ci++;
-      el.textContent = cur.slice(0, ci);
-      if (ci === cur.length){ back = true; setTimeout(tick, 1900); return; }
-      setTimeout(tick, 70 + Math.random()*60);
-    } else {
-      ci--;
-      el.textContent = cur.slice(0, ci);
-      if (ci === 0){ back = false; li = (li + 1) % lines.length; setTimeout(tick, 320); return; }
-      setTimeout(tick, 26);
-    }
+  if (reduce) { el.textContent = lines[0]; } else {
+    (function tick(){
+      var cur = lines[li];
+      if (!back) {
+        ci++; el.textContent = cur.slice(0, ci);
+        if (ci === cur.length) { back = true; return setTimeout(tick, 1900); }
+        return setTimeout(tick, 70 + Math.random() * 60);
+      }
+      ci--; el.textContent = cur.slice(0, ci);
+      if (ci === 0) { back = false; li = (li + 1) % lines.length; return setTimeout(tick, 320); }
+      return setTimeout(tick, 26);
+    })();
   }
-  tick();
+
+  /* 最新文章：读取同源 posts.json（由 GitHub Action 定时更新），失败则用内置快照 */
+  var fallback = [
+    {"title":"我和AI","link":"https://reimu0721.xyz/me-and-ai/","date":"2026-11-22"},
+    {"title":"Gemini 4 Argon 接入 SillyTavern 体验：难接但写得真好","link":"https://reimu0721.xyz/gemini-4-argon-sillytavern/","date":"2026-11-17"},
+    {"title":"新功能：网易云音乐卡片，贴个链接就能分享歌","link":"https://reimu0721.xyz/netease-music-card/","date":"2026-11-16"},
+    {"title":"故障修复：一个百分号，让 28 个页面打不开了九天","link":"https://reimu0721.xyz/comment-form-500-fix-20261116/","date":"2026-11-16"},
+    {"title":"给神社添几件小物：用 AI 生图做的七处小装饰","link":"https://reimu0721.xyz/shrine-small-decorations-ai-art/","date":"2026-11-10"},
+    {"title":"我的群友黄瓜酱","link":"https://reimu0721.xyz/my-friend-huangguajiang/","date":"2026-11-09"}
+  ];
+  function render(list) {
+    var box = document.getElementById('post-list');
+    if (!list || !list.length) { box.innerHTML = '<p class="posts-empty">暂无文章，去博客看看 →</p>'; return; }
+    box.innerHTML = list.map(function(p){
+      return '<a class="post" href="' + p.link + '" target="_blank" rel="noopener">' +
+             '<time>' + p.date + '</time><span class="t">' + p.title + '</span><span class="a">↗</span></a>';
+    }).join('');
+  }
+  render(fallback);
+  fetch('posts.json?t=' + Date.now(), {cache: 'no-store'})
+    .then(function(r){ return r.ok ? r.json() : Promise.reject(r.status); })
+    .then(function(list){ if (Array.isArray(list) && list.length) render(list); })
+    .catch(function(){ /* 保留内置快照 */ });
 })();
 </script>
 </body>
